@@ -4,7 +4,7 @@ import time
 import threading
 import requests
 
-Token = ""
+Token = os.environ['Auth']
 bot = telebot.TeleBot(Token)
 
 useruid = ["-4181045120"]
