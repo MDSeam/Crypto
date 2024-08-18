@@ -4,6 +4,7 @@ import time
 import threading
 import requests
 from keep import keep_alive
+import os
 keep_alive()
 
 Token = os.environ['Auth']
