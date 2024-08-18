@@ -10,7 +10,7 @@ keep_alive()
 Token = os.environ['Auth']
 bot = telebot.TeleBot(Token)
 
-useruid = ["-4181045120"]
+useruid = ["-1002212093901"]
 adminuid = []
 
 hamster_com = ''
