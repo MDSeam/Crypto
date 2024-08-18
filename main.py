@@ -55,6 +55,7 @@ def main():
     global hamster_com,hamster_chi
     while True:
         try:
+	    resp = requests.get('https://crypto-gp9d.onrender.com')
             hamster_data = hamster()
             if hamster_com == '' and hamster == '':
             	hamster_com = hamster_data['combo']
