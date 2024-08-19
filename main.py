@@ -46,7 +46,7 @@ def hamster():
             for z in morse_div.find_all("div", class_="inline-block notranslate"):
                 morse = (
                     morse
-                    + f"\n{z.find_all('span')[0].text} {z.find_all('span')[1].text}"
+                    + f"\n{z.find_all('span')[0].text} {''.join(dot.text forn dot in (z.find_all('span')[1:]))}"
                 )
 
             break
@@ -88,11 +88,18 @@ def send_welcome(message):
     bot.send_message(message.chat.id, message.chat.id)
 
 
-@bot.message_handler(commands=["test"])
+@bot.message_handler(commands=["hamster"])
 def send_welcome(message):
     global hamster_com, hamster_chi
     hamster_com = ""
     hamster_chi = ""
+
+@bot.message_handler(commands=["test"])
+def send_welcome(message):
+    bot.send_message("-4181045120",hamster_chi)
+    bot.send_message("-4181045120",hamster_com)
+
+
 
 
 polling_thread = threading.Thread(target=main)
