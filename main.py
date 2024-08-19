@@ -71,10 +71,12 @@ def main():
                 hamster_chi = hamster_data["morse"]
             elif hamster_data["morse"] != hamster_chi:
                 hamster_chi = hamster_data["morse"]
-                send_msg(hamster_data["morse"])
+                if run_b == True:
+                    send_msg(hamster_data["morse"])
             elif hamster_data["combo"] != hamster_com:
                 hamster_com = hamster_data["combo"]
-                send_msg(hamster_data["combo"])
+                if run_b == True:
+                    send_msg(hamster_data["combo"])
             else:
                 time.sleep(5)
 
@@ -109,11 +111,17 @@ def send_welcome(message):
 def send_welcome(message):
     global hamster_chi
     hamster_chi = 'Changed'
-    bot.send_message(message.chat.id,"Chpher changed")
+    bot.send_message(message.chat.id,"Chiher changed")
+    
 
 @bot.message_handler(commands=["run"])
 def send_welcome(message):
-    bot.send_message(message.chat.id,"Combo changed")
+    global run_b
+    if run_b == False:
+        run_b = True
+    else:
+        run_b = False
+    bot.send_message(message.chat.id,f"Program run {run_b}")
 
 
 polling_thread = threading.Thread(target=main)
