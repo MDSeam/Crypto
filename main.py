@@ -46,7 +46,7 @@ def hamster():
             for z in morse_div.find_all("div", class_="inline-block notranslate"):
                 morse = (
                     morse
-                    + f"\n{z.find_all('span')[0].text} {''.join(dot.text forn dot in (z.find_all('span')[1:]))}"
+                    + f"\n{z.find_all('span')[0].text} {''.join(dot.text for dot in (z.find_all('span')[1:]))}"
                 )
 
             break
