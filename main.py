@@ -27,7 +27,7 @@ def hamster():
     for x in articles:
         h1_tag = x.find("h1")
         if h1_tag and h1_tag.find("span", text="Hamster Kombat"):
-            date = f"{now.day} {now.strftime('%B')}"
+            date = "©®"
             combo = f"Hamster Kombat Combo\n\nDate : {date}\n"
             morse = f"Daily Cipher Code\n\nDate : {date}\n"
             combo_div = x.find_all("div", class_="relative w-full")
@@ -71,14 +71,14 @@ def main():
                 hamster_chi = hamster_data["morse"]
             elif hamster_data["morse"] != hamster_chi:
                 hamster_chi = hamster_data["morse"]
-                bot.send_message("-4181045120",hamster_chi)
+                bot.send_message("-4181045120",hamster_chi.replace("©®",f"{now.day} {now.strftime('%B')}"))
                 if run_b == True:
-                    send_msg(hamster_data["morse"])
+                    send_msg(hamster_data["morse"].replace("©®",f"{now.day} {now.strftime('%B')}"))
             elif hamster_data["combo"] != hamster_com:
                 hamster_com = hamster_data["combo"]
-                bot.send_message("-4181045120",hamster_com)
+                bot.send_message("-4181045120",hamster_com.replace("©®",f"{now.day} {now.strftime('%B')}"))
                 if run_b == True:
-                    send_msg(hamster_data["combo"])
+                    send_msg(hamster_data["combo"].replace("©®",f"{now.day} {now.strftime('%B')}"))
             else:
                 time.sleep(5)
 
@@ -100,8 +100,8 @@ def send_welcome(message):
 
 @bot.message_handler(commands=["test"])
 def send_welcome(message):
-    bot.send_message("-4181045120",hamster_chi)
-    bot.send_message("-4181045120",hamster_com)
+    bot.send_message("-4181045120",hamster_chi.replace("©®",f"{now.day} {now.strftime('%B')}"))
+    bot.send_message("-4181045120",hamster_com.replace("©®",f"{now.day} {now.strftime('%B')}"))
 
 @bot.message_handler(commands=["ccom"])
 def send_welcome(message):
