@@ -71,10 +71,12 @@ def main():
                 hamster_chi = hamster_data["morse"]
             elif hamster_data["morse"] != hamster_chi:
                 hamster_chi = hamster_data["morse"]
+                bot.send_message("-4181045120",hamster_chi)
                 if run_b == True:
                     send_msg(hamster_data["morse"])
             elif hamster_data["combo"] != hamster_com:
                 hamster_com = hamster_data["combo"]
+                bot.send_message("-4181045120",hamster_com)
                 if run_b == True:
                     send_msg(hamster_data["combo"])
             else:
