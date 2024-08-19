@@ -5,6 +5,8 @@ import threading
 import requests
 from keep import keep_alive
 import os
+from datetime import datetime
+now = datetime.now()
 
 keep_alive()
 
@@ -25,9 +27,7 @@ def hamster():
     for x in articles:
         h1_tag = x.find("h1")
         if h1_tag and h1_tag.find("span", text="Hamster Kombat"):
-            date = x.find(
-                "span", string=lambda text: "date" in text.lower()
-            ).text.replace("Date:", "")
+            date = f"{now.day} {now.strftime('%B')}"
             combo = f"Hamster Kombat Combo\n\nDate : {date}\n"
             morse = f"Daily Cipher Code\n\nDate : {date}\n"
             combo_div = x.find_all("div", class_="relative w-full")
