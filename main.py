@@ -16,7 +16,7 @@ adminuid = []
 
 hamster_com = ""
 hamster_chi = ""
-
+run_b = False
 
 def hamster():
     response = requests.get("https://hamsterkombo.com/")
@@ -99,7 +99,21 @@ def send_welcome(message):
     bot.send_message("-4181045120",hamster_chi)
     bot.send_message("-4181045120",hamster_com)
 
+@bot.message_handler(commands=["ccom"])
+def send_welcome(message):
+    global hamster_com
+    hamster_com = 'Changed'
+    bot.send_message(message.chat.id,"Combo changed")
 
+@bot.message_handler(commands=["cchi"])
+def send_welcome(message):
+    global hamster_chi
+    hamster_chi = 'Changed'
+    bot.send_message(message.chat.id,"Chpher changed")
+
+@bot.message_handler(commands=["run"])
+def send_welcome(message):
+    bot.send_message(message.chat.id,"Combo changed")
 
 
 polling_thread = threading.Thread(target=main)
