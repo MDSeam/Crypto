@@ -66,7 +66,7 @@ def main():
         try:
             resp = requests.get("https://crypto-gp9d.onrender.com")
             hamster_data = hamster()
-            if hamster_com == "" and hamster == "":
+            if hamster_com == "" and hamster_chi == "":
                 hamster_com = hamster_data["combo"]
                 hamster_chi = hamster_data["morse"]
             elif hamster_data["morse"] != hamster_chi:
