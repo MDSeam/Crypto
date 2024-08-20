@@ -7,6 +7,8 @@ from keep import keep_alive
 import os
 from datetime import datetime
 now = datetime.now()
+from pillo import seamcombo
+
 
 keep_alive()
 
@@ -21,6 +23,7 @@ hamster_chi = ""
 run_b = False
 
 def hamster():
+    clist = []
     response = requests.get("https://hamsterkombo.com/")
     soup = BeautifulSoup(response.text, "html.parser")
     articles = soup.find_all("article")
@@ -32,6 +35,9 @@ def hamster():
             morse = f"Daily Cipher Code\n\nDate : {date}\n"
             combo_div = x.find_all("div", class_="relative w-full")
             for y in combo_div:
+                pngu = y.find_all("div",class_="custom-aspect-ratio flex flex-col items-center justify-center bg-slate-800 w-[88%] rounded-full")
+                for n in pngu:
+                    clist.append(n.get("style").split(";")[-3].split("(")[-1].replace(")",""))
                 data = y.find_all("span")
                 combo = combo + f"\n{data[1].text}  ---->  {data[0].text}"
             morse_div = x.find(
@@ -50,7 +56,7 @@ def hamster():
                 )
 
             break
-    return {"combo": combo, "morse": morse}
+    return {"combo": combo, "morse": morse,"list": clist}
 
 
 def send_msg(msg):
@@ -63,22 +69,38 @@ def main():
     bot.send_message("1906998334", msg)
     global hamster_com, hamster_chi
     while True:
+        sdate = f"{now.day} {now.strftime('%B')}"
         try:
             resp = requests.get("https://crypto-gp9d.onrender.com")
             hamster_data = hamster()
             if hamster_com == "" and hamster_chi == "":
                 hamster_com = hamster_data["combo"]
                 hamster_chi = hamster_data["morse"]
+            elif hamster_data["combo"] != hamster_com:
+                hamster_com = hamster_data["combo"]
+                io = 1
+                for q in hamster_data["list"]:
+                    print(q)
+                    img_data = requests.get(f"https://hamsterkombo.com/{q}").content
+                    with open(f'pic{io}.webp', 'wb') as handler:
+                        handler.write(img_data)
+                    io = io +1
+                zaora = hamster_com.split("\n")
+                sub1 = zaora[-3].split("---->")[1]
+                sub2 = zaora[-2].split("---->")[1]
+                sub3 = zaora[-1].split("---->")[1]
+                tag1 = zaora[-3].split("---->")[0]
+                tag2 = zaora[-2].split("---->")[0]
+                tag3 = zaora[-1].split("---->")[0]
+                seamcombo(sdate,"pic1.webp","pic2.webp","pic3.webp",sub1,sub2,sub3,tag1,tag2,tag3)
+                bot.send_message("-4181045120","send-combo.png")
+                if run_b == True:
+                    send_msg("send-combo.png")
             elif hamster_data["morse"] != hamster_chi:
                 hamster_chi = hamster_data["morse"]
                 bot.send_message("-4181045120",hamster_chi.replace("©®",f"{now.day} {now.strftime('%B')}"))
                 if run_b == True:
                     send_msg(hamster_data["morse"].replace("©®",f"{now.day} {now.strftime('%B')}"))
-            elif hamster_data["combo"] != hamster_com:
-                hamster_com = hamster_data["combo"]
-                bot.send_message("-4181045120",hamster_com.replace("©®",f"{now.day} {now.strftime('%B')}"))
-                if run_b == True:
-                    send_msg(hamster_data["combo"].replace("©®",f"{now.day} {now.strftime('%B')}"))
             else:
                 time.sleep(5)
 
