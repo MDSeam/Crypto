@@ -94,9 +94,7 @@ def main():
                 tag3 = zaora[-1].split("---->")[0]
                 seamcombo(sdate,"pic1.webp","pic2.webp","pic3.webp",sub1,sub2,sub3,tag1,tag2,tag3)
                 with open("send-combo.png", 'rb') as photo:
-                    bot.send_photo("-4181045120", photo)
-                    if run_b == True:
-                        bot.send_photo("-1002212093901", photo)
+                    bot.send_photo("-1002212093901", photo)
                         
             elif hamster_data["morse"] != hamster_chi:
                 hamster_chi = hamster_data["morse"]
