@@ -96,8 +96,7 @@ def main():
                 with open("send-combo.png", 'rb') as photo:
                     bot.send_photo("-4181045120", photo)
                     if run_b == True:
-                        for g in useruid:
-                            bot.send_photo(g, photo)
+                        bot.send_photo("-1002212093901", photo)
                         
             elif hamster_data["morse"] != hamster_chi:
                 hamster_chi = hamster_data["morse"]
