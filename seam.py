@@ -5,7 +5,7 @@ bot = telebot.TeleBot(Token)
 
 
 @bot.message_handler(content_types="text")
-def message_reply(message):
+def message_reply(func=lambda message: message.reply_to_message is None):
   bot.forward_message("1906998334",message.chat.id,message.message_id)
 
 # Handler for reply messages to forwarded messages
@@ -27,6 +27,7 @@ def reply_with_forwarded_info(message):
         forward_info = "This message is not a forwarded message."
     
     bot.reply_to(message, forward_info)
+    
 
 
 bot.infinity_polling()
