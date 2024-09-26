@@ -1,5 +1,5 @@
 import telebot
-Token = os.environ["Auth"]
+Token = "6600626960:AAHr-8qG0VEhlLmhI5hsCnMayUpymcL07-8"
 bot = telebot.TeleBot(Token)
 
 
