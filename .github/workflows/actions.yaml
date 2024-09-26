@@ -1,6 +1,8 @@
 name: run main.py
 
 on: [push]
+env:
+  Auth: ${{secrets.Auth}}
 jobs:
   build:
     runs-on: ubuntu-latest
