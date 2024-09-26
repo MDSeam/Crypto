@@ -1,5 +1,6 @@
 import telebot
-Token = "${{secrets.Auth}}"
+import os
+Token = os.environ["Auth"]
 bot = telebot.TeleBot(Token)
 
 
