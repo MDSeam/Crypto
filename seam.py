@@ -1,5 +1,6 @@
 import telebot
 import os
+from telebot.types import InputFile
 Token = os.environ["Auth"]
 bot = telebot.TeleBot(Token)
 
