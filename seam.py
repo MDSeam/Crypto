@@ -1,5 +1,5 @@
 import telebot
-Token = ${{secrets.Auth}}
+Token = "${{secrets.Auth}}"
 bot = telebot.TeleBot(Token)
 
 
