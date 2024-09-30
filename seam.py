@@ -13,9 +13,6 @@ def message_reply(message):
     bot.send_message(message.reply_to_message.forward_from.id,message.text)
   
 
-
-
-    
-
+#sejsjjsjsjsj
 
 bot.infinity_polling()
